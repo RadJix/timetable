@@ -1,0 +1,28 @@
+.content {
+    display: flex;
+    margin-top: 50px;
+    width: 100%;
+    background-color: #DCDCDC;
+    padding: 20px 10px;
+    border: 1px solid #696969;
+}
+
+.date {
+    width: 8%;
+}
+
+.place {
+    width: 20%;
+}
+
+.description {
+    width: 44%;
+}
+
+.teachers {
+    width: 20%;
+}
+
+.school {
+    width: 8%;
+}

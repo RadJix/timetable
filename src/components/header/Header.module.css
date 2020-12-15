@@ -1,0 +1,40 @@
+/*.header {
+    background-color: red;
+    grid-area: header;
+    padding: 15px 0;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template: 1fr / 1fr minmax(auto, 1px) 1fr;
+}
+
+.nav {
+    display: grid;
+    grid-auto-flow: column;
+}*/
+
+.header {
+
+}
+
+.nav {
+    display: flex;
+    width: 800px;
+    margin: 20px auto;
+}
+
+.schools, .lecturers, .date {
+    display: block;
+    margin: 0 auto;
+}
+
+.school {
+    width: 177px;
+    height: 23px;
+}
+
+input, select {
+    outline: none;
+}
+
+
