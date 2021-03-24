@@ -1,11 +1,12 @@
 import React from "react";
 import './App.css';
-import School from "./components/School";
+import store from "./redux/store";
+import SchoolContainer from "./components/School";
 
 
 function App() {
   return (
-      <School></School>
+      <SchoolContainer store={store}></SchoolContainer>
   );
 }
 

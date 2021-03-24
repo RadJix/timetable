@@ -1,20 +1,21 @@
 import React from 'react';
 import c from './Timetable.module.css';
+import Table from "./table/Table";
 
 
 const Timetable = (props) => {
+    debugger;
+    let tableElements =
+        [...props.school.Lecture]
+            .map(p => <Table title={p.interfaceLecture.title} teachers={p.interfaceLecture.teachers}
+                           schools={p.interfaceLecture.schools} date={p.interfaceLecture.date} place={p.interfaceLecture.place}/>);
     return (
         <div className={c.content}>
-            <div className={c.date}>26.09</div>
-            <div className={c.place}>{/*Кабинет, которого нет*/}{props.place}</div>
-            <div className={c.description}>Дополнительная лекция</div>
-            <div className={c.teachers}>{props.name}</div>
-            <div className={c.school}>ШМД</div>
+            {tableElements}
         </div>
     );
 }
 
 
-
-
 export default Timetable
+
