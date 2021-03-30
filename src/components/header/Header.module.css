@@ -14,27 +14,35 @@
 }*/
 
 .header {
-
 }
 
-.nav {
+/*.nav {
     display: flex;
-    width: 800px;
     margin: 20px auto;
-}
+}*/
 
 .schools, .lecturers, .date {
     display: block;
-    margin: 0 auto;
+    margin-right: 30px;
+}
+
+.lecturerName, .school, .start, .end {
+    height: 18px;
 }
 
 .school {
     width: 177px;
-    height: 23px;
+    height: 22px;
 }
 
 input, select {
     outline: none;
+}
+
+.search__form {
+    display: flex;
+    justify-content: center;
+    padding: 50px 0;
 }
 
 

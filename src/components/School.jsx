@@ -5,12 +5,15 @@ import Timetable from "./main/Timetable";
 import {connect} from "react-redux";
 
 
+
+
 class School extends React.Component {
 
     render() {
         return (
             <div className={style.wrapper}>
-                <Header />
+                <Header {...this.props}
+                        school={this.props.school}/>
                 <Timetable {...this.props}
                            school={this.props.school} />
             </div>);
@@ -18,9 +21,10 @@ class School extends React.Component {
     }
 }
 
+
 let mapStateToProps = (state) => {
     return {
-        school: state.school
+        school: state.school,
     }
 }
 

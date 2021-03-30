@@ -6,12 +6,13 @@ import Header from "./Header";
 class HeaderContainer extends React.Component {
     debugger;
     render() {
-        return <Header {...this.props} />
+        return <Header {...this.props}
+                       school={this.props.school} />
     }
 }
-debugger;
+
 const mapStateToProps = (state) => ({
-    school: state.Lecture.schools
+    schools: state.school
 });
 
 
