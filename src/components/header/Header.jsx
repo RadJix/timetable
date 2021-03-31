@@ -12,10 +12,10 @@ const Header = (props) => {
         return teacher.toLowerCase().includes(value.toLowerCase());
     })
 
-    const tableElements =
+    /*const tableElements =
         props.school.Lecture
             .map(p => <Table title={p.interfaceLecture.title} schools={p.interfaceLecture.schools}
-                             date={p.interfaceLecture.date} place={p.interfaceLecture.place} />);
+                             date={p.interfaceLecture.date} place={p.interfaceLecture.place} />);*/
 
 
     return (
@@ -52,11 +52,16 @@ const Header = (props) => {
                 {
                     filteredTeachers.map((teacher) => {
                         return (
-                            <Table teacher={teacher} />
+                            <Table
+                                teacher={teacher}
+                                place={props.school.Lecture.filter(item=>item.interfaceLecture.teachers===teacher)[0].interfaceLecture.place}
+                                date = {props.school.Lecture.filter(item=>item.interfaceLecture.teachers===teacher)[0].interfaceLecture.date}
+                                title = {props.school.Lecture.filter(item=>item.interfaceLecture.teachers===teacher)[0].interfaceLecture.title}
+                                schools = {props.school.Lecture.filter(item=>item.interfaceLecture.teachers===teacher)[0].interfaceLecture.schools}
+                            />
                         )
                     })
                 }
-                {tableElements}
             </div>
         </div>
     );
