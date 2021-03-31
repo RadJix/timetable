@@ -1,3 +1,4 @@
+/*
 import React from 'react';
 import c from './Timetable.module.css';
 import Table from "./table/Table";
@@ -17,4 +18,5 @@ const Timetable = (props) => {
 
 
 export default Timetable
+*/
 

@@ -1,3 +1,7 @@
+import {useState} from "react";
+
+const FIND_TEACHERS = 'FIND_TEACHERS';
+
 let initialState = {
     Lecture: [
         {
@@ -70,6 +74,12 @@ const schoolReducer = (state = initialState, action) => {
             return state;
     }
 }
+
+
+
+export const onFindTeachers = (name) => ({type: FIND_TEACHERS, payload: name})
+
+
 
 
 export default schoolReducer;

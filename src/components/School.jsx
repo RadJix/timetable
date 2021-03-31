@@ -1,21 +1,23 @@
 import React from 'react';
-import Header from "./header/Header";
+import HeaderContainer from "./header/HeaderContainer";
 import style from './School.module.css';
 import Timetable from "./main/Timetable";
 import {connect} from "react-redux";
+import Header from "./header/Header";
+import {onFindTeachers} from "../redux/school-reducer";
 
 
 
 
 class School extends React.Component {
-
     render() {
         return (
             <div className={style.wrapper}>
                 <Header {...this.props}
-                        school={this.props.school}/>
-                <Timetable {...this.props}
-                           school={this.props.school} />
+                        school={this.props.school}
+                        onFindTeachers={this.props.onFindTeachers}/>
+               {/* <Timetable {...this.props}
+                           school={this.props.school} />*/}
             </div>);
 
     }
@@ -29,7 +31,7 @@ let mapStateToProps = (state) => {
 }
 
 
-const SchoolContainer = connect(mapStateToProps, {})(School);
+const SchoolContainer = connect(mapStateToProps, {onFindTeachers})(School);
 
 
 

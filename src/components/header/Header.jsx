@@ -4,14 +4,19 @@ import Table from "../main/table/Table";
 
 
 const Header = (props) => {
-    debugger;
-    const teachersItem =
+    const teachersName =
         props.school.Lecture
-            .map(item =>  item.interfaceLecture.teachers);
+                .map(item =>  item.interfaceLecture.teachers);
     const [value, setValue] = useState('');
-    const filteredTeachers = teachersItem.filter(teacher => {
-        return teacher.teachers.toLowerCase().includes(value.toLowerCase())
+    const filteredTeachers = teachersName.filter((teacher) => {
+        return teacher.toLowerCase().includes(value.toLowerCase());
     })
+
+    const tableElements =
+        props.school.Lecture
+            .map(p => <Table title={p.interfaceLecture.title} schools={p.interfaceLecture.schools}
+                             date={p.interfaceLecture.date} place={p.interfaceLecture.place} />);
+
 
     return (
         <div className={s.header}>
@@ -45,12 +50,13 @@ const Header = (props) => {
             </nav>
             <div className={s.teachers}>
                 {
-                    filteredTeachers.map((teacher, index) => {
+                    filteredTeachers.map((teacher) => {
                         return (
-                            <div  teacher={teacher} key={index}/>
+                            <Table teacher={teacher} />
                         )
                     })
-                }s
+                }
+                {tableElements}
             </div>
         </div>
     );
