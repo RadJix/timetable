@@ -1,7 +1,3 @@
-import {useState} from "react";
-
-const FIND_TEACHERS = 'FIND_TEACHERS';
-
 let initialState = {
     Lecture: [
         {
@@ -9,8 +5,8 @@ let initialState = {
                 title: "Первая лекция",
                 link: null,
                 teachers: "Дмитрий Моруз",
-                schools: ["backend", "frontend", "design"],
-                date: 26.09,
+                schools: ["backend", "frontend", ],
+                date: 1617580800000,
                 place: "Кабинет, которого нет",
             },
             interfaceTeachers: {
@@ -24,8 +20,8 @@ let initialState = {
                 title: "Дополнительная лекция",
                 link: null,
                 teachers: "Навальный А.Г",
-                schools: ["backend", "frontend", "design"],
-                date: 27.09,
+                schools: ["backend",  "design"],
+                date: 1617753600000,
                 place: "Кабинет, которого нет",
             },
             interfaceTeachers: {
@@ -39,8 +35,8 @@ let initialState = {
                 title: "Алгоритмы и структры данных",
                 link: null,
                 teachers: "Стась А.Н",
-                schools: ["backend", "frontend", "design"],
-                date: 23.09,
+                schools: ["design"],
+                date: 1617926400000,
                 place: "УЛК 4/04",
             },
             interfaceTeachers: {
@@ -54,8 +50,8 @@ let initialState = {
                 title: "Математический анализ",
                 link: null,
                 teachers: "Семешин Н.В",
-                schools: ["backend", "frontend", "design"],
-                date: 24.09,
+                schools: [ "frontend", "design"],
+                date: 1618012800000,
                 place: "256a",
             },
             interfaceTeachers: {
@@ -75,9 +71,6 @@ const schoolReducer = (state = initialState, action) => {
     }
 }
 
-
-
-export const onFindTeachers = (name) => ({type: FIND_TEACHERS, payload: name})
 
 
 

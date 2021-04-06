@@ -8,9 +8,7 @@ const Table = (props) => {
             <div className={s.date}>{props.date}</div>
             <div className={s.place}>{props.place}</div>
             <div className={s.description}>{props.title}</div>
-            <div className={s.teachers}>{props.teacher}
-
-            </div>
+            <div className={s.teachers}>{props.teacher}</div>
             <div className={s.schools}>{props.schools}</div>
         </div>
     )
