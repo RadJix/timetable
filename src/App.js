@@ -1,13 +1,10 @@
 import React from "react";
-import './App.css';
-import store from "./redux/store";
-import SchoolContainer from "./components/School";
-
+import "./App.css";
+import Schools from "./components/schools/Schools";
+import state from "./state/state";
 
 function App() {
-  return (
-      <SchoolContainer store={store}></SchoolContainer>
-  );
+  return <Schools state={state} />;
 }
 
 export default App;
