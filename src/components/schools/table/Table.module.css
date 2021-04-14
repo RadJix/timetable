@@ -1,7 +1,7 @@
 
 .table {
     display: grid;
-    grid-template-columns: 1fr 2fr 4fr 2fr 1fr;
+    grid-template-columns: 10% 15% 35% 20% 20%;
     background-color: #DCDCDC;
     border: 1px solid #696969;
     padding: 20px 10px;
@@ -16,7 +16,7 @@
 @media screen and (max-width: 800px){
     .table {
         display: grid;
-        grid-template-columns: 3fr 2fr;
+        grid-template-columns: 1fr 1fr;
         background-color: #DCDCDC;
         border: 1px solid #696969;
         padding: 20px 5px;

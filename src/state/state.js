@@ -5,7 +5,7 @@ const state = {
         title: "Первая лекция",
         link: null,
         teachers: "Дмитрий Моруз",
-        schools: ["backend", "frontend"],
+        schools: ["backend", "frontend", "design"],
         date: 1617580800000,
         place: "Кабинет, которого нет",
       },
