@@ -13,30 +13,28 @@ const Schools = (props) => {
 
   const [dateFilterEnd, setDateFilterEnd] = useState(bigDate);
 
-  const useFilter = () => {
-    const result = props.state.Lecture.map((item) => {
-      const { teachers, date, place, title, schools } = item.interfaceLecture;
-      return {
-        teacher: teachers,
-        date: date,
-        place: place,
-        title: title,
-        schools: schools.join(","),
-      };
-    }).filter((item) => {
-      return (
-        item.teacher
-          .toLowerCase()
-          .includes(teacherFilterValue.toString().toLowerCase()) &&
-        schoolFilterValue !== null &&
-        item.schools.toLowerCase().includes(schoolFilterValue.toLowerCase()) &&
-        dateFilterBegin <= +item.date &&
-        dateFilterEnd >= +item.date
-      );
-    });
 
-    return result;
-  };
+  const result = props.state.Lecture.map((item) => {
+    const { teachers, date, place, title, schools } = item.interfaceLecture;
+    return {
+      teacher: teachers,
+      date: date,
+      place: place,
+      title: title,
+      schools: schools.join(","),
+    };
+  }).filter((item) => {
+    return (
+      item.teacher
+        .toLowerCase()
+        .includes(teacherFilterValue.toString().toLowerCase()) &&
+      schoolFilterValue !== null &&
+      item.schools.toLowerCase().includes(schoolFilterValue.toLowerCase()) &&
+      dateFilterBegin <= +item.date &&
+      dateFilterEnd >= +item.date
+    );
+  });
+
 
   return (
     <div className={s.header}>
@@ -88,7 +86,7 @@ const Schools = (props) => {
         </form>
       </nav>
       <div className={s.teachers}>
-        {useFilter().map((item, index) => (
+        {result.map((item, index) => (
           <Table
             key={index}
             teacher={item.teacher}
