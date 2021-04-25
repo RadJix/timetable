@@ -1,8 +1,16 @@
 import React, { useState } from "react";
 import s from "./Schools.module.css";
 import Table from "./table/Table";
+import axios from "axios";
 
-const Schools = (props) => {
+const Schools = () => {
+  const [timetable, setTimetable] = useState([])
+
+  axios.get('https://agazizov.pro/schedule-api')
+      .then((response) => {
+        setTimetable(response.data)
+      })
+
   const bigDate = 9617580800000;
 
   const [teacherFilterValue, setTeacher] = useState("");
@@ -14,14 +22,13 @@ const Schools = (props) => {
   const [dateFilterEnd, setDateFilterEnd] = useState(bigDate);
 
 
-  const result = props.state.Lecture.map((item) => {
-    const { teachers, date, place, title, schools } = item.interfaceLecture;
+  const result = timetable.map((item) => {
     return {
-      teacher: teachers,
-      date: date,
-      place: place,
-      title: title,
-      schools: schools.join(","),
+      teacher: item.teachers.name,
+      date: item.date,
+      place: item.place,
+      title: item.title,
+      schools: item.schools.join(","),
     };
   }).filter((item) => {
     return (
@@ -47,7 +54,7 @@ const Schools = (props) => {
                 className={s.school}
                 onChange={(e) => setSchoolFilterValue(e.target.value)}
               >
-                <option value="">Все школы</option>
+                <option value="">Все направления</option>
                 <option value="frontend">Frontend</option>
                 <option value="backend">Backend</option>
                 <option value="design">Design</option>

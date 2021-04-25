@@ -1,3 +1,4 @@
+
 const state = {
   Lecture: [
     {
@@ -62,5 +63,9 @@ const state = {
     },
   ],
 };
+
+
+
+
 
 export default state;
