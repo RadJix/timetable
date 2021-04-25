@@ -1,15 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import s from "./Schools.module.css";
 import Table from "./table/Table";
 import axios from "axios";
 
 const Schools = () => {
-  const [timetable, setTimetable] = useState([])
-
-  axios.get('https://agazizov.pro/schedule-api')
-      .then((response) => {
-        setTimetable(response.data)
-      })
+  const [data, setData] = useState(null);
 
   const bigDate = 9617580800000;
 
@@ -21,27 +16,37 @@ const Schools = () => {
 
   const [dateFilterEnd, setDateFilterEnd] = useState(bigDate);
 
+  const dataRequest = () => {
+    axios.get("https://agazizov.pro/schedule-api").then((response) => {
+      const resultTemp = response.data.map((item) => {
+        const name = item.teachers.length > 0 ? item.teachers[0].name : "";
+        return {
+          teacher: name,
+          date: item.date,
+          place: item.place,
+          title: item.title,
+          schools: item.schools.join(","),
+        };
+      });
+      setData(resultTemp);
+    });
+  };
 
-  const result = timetable.map((item) => {
-    return {
-      teacher: item.teachers.name,
-      date: item.date,
-      place: item.place,
-      title: item.title,
-      schools: item.schools.join(","),
-    };
-  }).filter((item) => {
-    return (
-      item.teacher
-        .toLowerCase()
-        .includes(teacherFilterValue.toString().toLowerCase()) &&
-      schoolFilterValue !== null &&
-      item.schools.toLowerCase().includes(schoolFilterValue.toLowerCase()) &&
-      dateFilterBegin <= +item.date &&
-      dateFilterEnd >= +item.date
-    );
-  });
+  useEffect(() => {
+    dataRequest();
+  }, []);
 
+  const filterData = (ms) =>
+    ms.filter((item) => {
+      return (
+        item.teacher
+          .toLowerCase()
+          .includes(teacherFilterValue.toString().toLowerCase()) &&
+        item.schools.toLowerCase().includes(schoolFilterValue.toLowerCase()) &&
+        dateFilterBegin <= new Date(item.date) &&
+        dateFilterEnd >= new Date(item.date)
+      );
+    });
 
   return (
     <div className={s.header}>
@@ -93,20 +98,21 @@ const Schools = () => {
         </form>
       </nav>
       <div className={s.teachers}>
-        {result.map((item, index) => (
-          <Table
-            key={index}
-            teacher={item.teacher}
-            place={item.place}
-            title={item.title}
-            schools={item.schools}
-            date={new Date(item.date).toLocaleDateString()}
-          />
-        ))}
+        {data
+          ? filterData(data).map((item, index) => (
+              <Table
+                key={index}
+                teacher={item.teacher}
+                place={item.place}
+                title={item.title}
+                schools={item.schools}
+                date={new Date(item.date).toLocaleDateString()}
+              />
+            ))
+          : null}
       </div>
     </div>
   );
 };
-
 
 export default Schools;
