@@ -4,9 +4,9 @@ import Table from "./table/Table";
 import axios from "axios";
 
 const Schools = () => {
-  const [data, setData] = useState(null);
-
   const bigDate = 9617580800000;
+
+  const [data, setData] = useState(null);
 
   const [teacherFilterValue, setTeacher] = useState("");
 
@@ -47,13 +47,12 @@ const Schools = () => {
         dateFilterEnd >= new Date(item.date)
       );
     });
-
   return (
-    <div className={s.header}>
-      <nav className={s.nav}>
+    <div>
+      <nav>
         <form className={s.search__form}>
           <div className={s.schools}>
-            <span>Школа</span>
+            <span>Направление</span>
             <div>
               <select
                 className={s.school}
@@ -97,7 +96,7 @@ const Schools = () => {
           </div>
         </form>
       </nav>
-      <div className={s.teachers}>
+      <div>
         {data
           ? filterData(data).map((item, index) => (
               <Table
